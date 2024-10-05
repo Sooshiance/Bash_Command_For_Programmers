@@ -1,4 +1,4 @@
-from rest_framework import status, response, permissions, generics
+from rest_framework import permissions, generics
 from rest_framework.exceptions import ValidationError
 from rest_framework.pagination import PageNumberPagination
 
