@@ -26,4 +26,6 @@ urlpatterns = [
     path("api/project/", include("project.urls")),
 
     path("api/club/", include("club.urls")),
+
+    path("api/dashboard/", include("dash_board.urls")),
 ]
