@@ -19,7 +19,9 @@ from django.urls import path, include
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+
+    # TODO: Change admin path to something else
+    path('random-text/admin/my-portfolio/', admin.site.urls),
 
     path("api/user/", include("user.urls")),
 
