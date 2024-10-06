@@ -22,13 +22,13 @@ class ProjectQuery:
         qr=None
 
         if title:
-            qr &= Q(title)
+            qr &= Q(title__icontains=title)
         
         if description:
-            qr &= Q(description)
+            qr &= Q(description__icontains=description)
         
         if url:
-            qr &= Q(url)
+            qr &= Q(url__icontains=url)
         
         return Project.objects.filter(qr)
 
