@@ -85,7 +85,7 @@ class OTPRequestView(APIView):
 
 class PasswordResetView(APIView):
     """
-    An endpoint for Reseting password for Users
+    An endpoint for Resetting password for Users
     """
     
     def post(self, request):
