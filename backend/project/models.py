@@ -40,8 +40,8 @@ class Testimonial(models.Model):
     sku = ShortUUIDField(max_length=20, db_index=True, unique=True, alphabet="0123456789abcdefghij")
     name = models.CharField(max_length=100)
     content = models.CharField(max_length=255)
-    position = models.CharField(max_length=100)
-    company = models.CharField(max_length=100)
+    position = models.CharField(max_length=100, blank=True, null=True)
+    company = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 
