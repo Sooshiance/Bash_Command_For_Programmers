@@ -1,9 +1,13 @@
 from pathlib import Path
+from datetime import timedelta
 
 from decouple import config
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+
+SECRET_KEY = config("DEV_SECRET_KEY")
 
 
 # TODO: 
@@ -83,6 +87,18 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+DATABASES = {
+'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': config('DB_NAME'),
+    'USER': config('DB_USER'),
+    'HOST': config('DB_HOST'),
+    'PASSWORD': config('DB_PASSWORD'),
+    'PORT': '5432',
+    }
+}
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -100,6 +116,10 @@ MEDIA_URL  = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
 
 
+# TODO: Change the default User model
+AUTH_USER_MODEL = "user.User"
+
+
 # TODO : Email configurations
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -108,3 +128,54 @@ EMAIL_USE_SSL = False
 EMAIL_PORT = 587
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+
+# TODO : React development mode
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:3000",
+    "http://localhost:3000",
+    
+    "http://192.168.1.53:3000",
+]
+CORS_ALLOW_CREDENTIALS = True
+
+
+
+# TODO : Rest framework configurations
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+}
+
+
+# TODO : JSON Web Token configurations for develop mode
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=7),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
+}
+
+
+# LOGGING = {
+#     "version": 1,
+#     "disable_existing_loggers": False,
+#     "handlers": {
+#         "file": {
+#             "level": "DEBUG",
+#             "class": "logging.FileHandler",
+#             "filename": "/path/to/django/debug.log",
+#         },
+#     },
+#     "loggers": {
+#         "django": {
+#             "handlers": ["file"],
+#             "level": "DEBUG",
+#             "propagate": True,
+#         },
+#     },
+# }
