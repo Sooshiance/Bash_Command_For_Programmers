@@ -1,5 +1,6 @@
 from pathlib import Path
 from datetime import timedelta
+import os
 
 from decouple import config
 
@@ -87,21 +88,15 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# DATABASES = {
-# 'default': {
-#     'ENGINE': 'django.db.backends.postgresql',
-#     'NAME': config('DB_NAME'),
-#     'USER': config('DB_USER'),
-#     'HOST': config('DB_HOST'),
-#     'PASSWORD': config('DB_PASSWORD'),
-#     'PORT': '5432',
-#     }
-# }
-
+# TODO: Change the default database
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': config('DB_NAME'),
+    'USER': config('DB_USER'),
+    'HOST': config('DB_HOST'),
+    'PASSWORD': config('DB_PASSWORD'),
+    'PORT': '5432',
     }
 }
 
@@ -125,6 +120,10 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 # TODO: Change the default User model
 AUTH_USER_MODEL = "user.User"
+
+STATIC_URL = 'static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+# STATIC_ROOT = (os.path.join(BASE_DIR, 'ui'),)
 
 
 # TODO : Email configurations

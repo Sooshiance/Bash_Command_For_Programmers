@@ -23,6 +23,8 @@ class UserService:
         first_name=first_name,
         last_name=last_name
         )
+        user.set_password(password)
+        user.save()
         return user
 
     @staticmethod
@@ -72,7 +74,9 @@ class OTPService:
         try:
             user = User.objects.get(email=email)
             otp_record = OTPRepository.get_otp_by_user(user)
-            if otp_record and otp_record.token == otp and (timezone.now() - otp_record.created_at).seconds < 60:
+            if (timezone.now() - otp_record.created_at).seconds < 60:
+                otp_record.delete()
+            if otp_record and otp_record.otp == otp and (timezone.now() - otp_record.created_at).seconds < 60:
                 return True
             return False
         except User.DoesNotExist:

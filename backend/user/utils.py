@@ -12,7 +12,7 @@ def sendToken(user):
 
     otp = totp.now()
 
-    OTP.objects.create(user=user, token=otp).save()
+    OTP.objects.create(user=user, otp=otp).save()
 
     print(f"OTP ====== {otp}")
 

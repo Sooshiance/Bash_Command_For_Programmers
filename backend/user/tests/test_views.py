@@ -90,12 +90,11 @@ class TestPasswordReset(APITestCase):
 
     def test_otp_reset_password(self):
         response_otp = self.client.post(self.otp, data={"email": self.credentials["email"]})
-        # print(response_otp.status_code)
+
         otp = OTP.objects.get(user=self.user)
-        print(otp.token)
-        reset = self.client.post(self.reset, data={"email": "test321@gmail.com",
-                                                   "otp": otp.token,
-                                                   "new_password":"mnbvcxz#098765432100",})
+
+        response_reset = self.client.post(self.reset, data={"email":self.credentials["email"],
+                                                            "otp":otp.otp,
+                                                            "new_password":"mnbvcxzlkjhgfdsa12345#"})
         
-        # print(reset.status_code)
-        print(reset.content)
+        print(response_reset.status_code)

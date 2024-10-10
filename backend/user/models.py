@@ -116,5 +116,5 @@ class Profile(models.Model):
 
 class OTP(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    token = models.DecimalField(max_digits=6, decimal_places=0)
+    otp = models.CharField(max_length=6)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -6,15 +6,15 @@ class UserRepository:
     
     """
     @staticmethod
-    def get_user_by_email(email):
+    def get_user_by_email(email)-> User:
         try:
             return User.objects.get(email=email)
         except User.DoesNotExist:
             return None
 
     @staticmethod
-    def create_user(**kwargs):
-        user = User.objects.create(**kwargs)
+    def create_user(**kwargs)-> User:
+        user:User = User.objects.create_user(**kwargs)
         return user
 
     @staticmethod
