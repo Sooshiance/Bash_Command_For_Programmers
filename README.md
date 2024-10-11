@@ -12,10 +12,10 @@ I used **best practice** of Django to modify its `settings`.
 
 We have 4 major app.
 
-- **`user`**: We handled authentication flow in <a href="#user">user</a>
-- **`project`**: We handled project, post etc. flow in <a href="#project">project</a>
-- **`dash_board`**: We handled admin statistics flow in <a href="#dash_board">dash_board</a>
-- **`club`**: We handled Rating, Review etc. flow in <a href="#club">club</a>
+- **`user`**: We handled authentication flow in <a href="#user-app">user</a>
+- **`project`**: We handled project, post etc. flow in <a href="#project-app">project</a>
+- **`dash_board`**: We handled admin statistics flow in <a href="#dash_board-app">dash_board</a>
+- **`club`**: We handled Rating, Review etc. flow in <a href="#club-app">club</a>
 
 Let's deep dive into these apps one by one:
 
