@@ -137,22 +137,28 @@ To run this project in develop mode:
 - If you prefer `Postgresql`, make sure the connection and its necessary dependencies.
 
 Run these commands:
-- Linux/Mac
+- Linux/Mac:
+
         python3 manage.py makemigrations
+
         python3 manage.py migrate
+
         python3 manage.py test
+
         python3 manage.py createsuperuser
+
         python3 manage.py runserver
 
-- Windows
+- Windows:
+
         python manage.py makemigrations
-,
+
         python manage.py migrate
-,
+
         python manage.py test
-, 
+ 
         python manage.py createsuperuser
-,
+
         python manage.py runserver
 
 # Frontend(using yarn)
