@@ -121,6 +121,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 # TODO: Change the default User model
 AUTH_USER_MODEL = "user.User"
 
+
 STATIC_URL = 'static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 # STATIC_ROOT = (os.path.join(BASE_DIR, 'ui'),)
