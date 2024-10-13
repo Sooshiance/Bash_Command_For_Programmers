@@ -87,14 +87,3 @@ class TestPasswordReset(APITestCase):
 
         self.otp = reverse("user:otp")
         self.reset = reverse("user:reset")
-
-    def test_otp_reset_password(self):
-        response_otp = self.client.post(self.otp, data={"email": self.credentials["email"]})
-
-        otp = OTP.objects.get(user=self.user)
-
-        response_reset = self.client.post(self.reset, data={"email":self.credentials["email"],
-                                                            "otp":otp.otp,
-                                                            "new_password":"mnbvcxzlkjhgfdsa12345#"})
-        
-        print(response_reset.status_code)
