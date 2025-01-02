@@ -2,22 +2,26 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, permissions
 
-from .serializers import (ProjectSerializer,
-                          PostSerializer,
-                          SkillSerializer,
-                          TestimonialSerializer,
-                          ContactMessageSerializer,
-                          EducationSerializer,
-                          ExperienceSerializer,
-                          CertificationSerializer,)
-from .services import (ProjectService,
-                       PostService,
-                       SkillService,
-                       TestimonialService,
-                       ContactMessageService,
-                       EducationService,
-                       ExperienceService,
-                       CertificationService,)
+from .serializers import (
+    ProjectSerializer,
+    PostSerializer,
+    SkillSerializer,
+    TestimonialSerializer,
+    ContactMessageSerializer,
+    EducationSerializer,
+    ExperienceSerializer,
+    CertificationSerializer,
+)
+from .services import (
+    ProjectService,
+    PostService,
+    SkillService,
+    TestimonialService,
+    ContactMessageService,
+    EducationService,
+    ExperienceService,
+    CertificationService,
+)
 
 
 class ProjectAPIView(APIView):
@@ -37,11 +41,11 @@ class ProjectAPIView(APIView):
 
     def post(self, request):
         project = self.service.create_project(
-        user=request.user,
-        title=request.data.get('title'),
-        description=request.data.get('description'),
-        image=request.data.get('image'),
-        url=request.data.get('url')
+            user=request.user,
+            title=request.data.get("title"),
+            description=request.data.get("description"),
+            image=request.data.get("image"),
+            url=request.data.get("url"),
         )
         srz = ProjectSerializer(project)
         return Response(srz.data, status=status.HTTP_201_CREATED)
@@ -72,9 +76,9 @@ class PostAPIView(APIView):
 
     def post(self, request):
         post = self.service.create_post(
-        title=request.data.get('title'),
-        content=request.data.get('content'),
-        author=request.user,
+            title=request.data.get("title"),
+            content=request.data.get("content"),
+            author=request.user,
         )
         srz = PostSerializer(post)
         return Response(srz.data, status=status.HTTP_201_CREATED)
@@ -105,9 +109,9 @@ class SkillAPIView(APIView):
 
     def post(self, request):
         skill = self.service.create_skill(
-        user=request.user,
-        name=request.data.get('name'),
-        proficiency=request.data.get('proficiency')
+            user=request.user,
+            name=request.data.get("name"),
+            proficiency=request.data.get("proficiency"),
         )
         srz = SkillSerializer(skill)
         return Response(srz.data, status=status.HTTP_201_CREATED)
@@ -138,15 +142,15 @@ class TestimonialAPIView(APIView):
 
     def post(self, request):
         testimonial = self.service.create_testimonial(
-        user=request.user,
-        name=request.data.get('name'),
-        content=request.data.get('content'),
-        position=request.data.get('position'),
-        company=request.data.get('company')
+            user=request.user,
+            name=request.data.get("name"),
+            content=request.data.get("content"),
+            position=request.data.get("position"),
+            company=request.data.get("company"),
         )
         srz = TestimonialSerializer(testimonial)
         return Response(srz.data, status=status.HTTP_201_CREATED)
-    
+
     def put(self, request, testimonial_id):
         self.service.update_testimonial(testimonial_id, **request.data)
         return Response(status=status.HTTP_205_RESET_CONTENT)
@@ -173,10 +177,10 @@ class ContactMessageAPIView(APIView):
 
     def post(self, request):
         contact_message = self.service.create_contact_message(
-        user=request.user,
-        name=request.data.get('name'),
-        email=request.data.get('email'),
-        message=request.data.get('message')
+            user=request.user,
+            name=request.data.get("name"),
+            email=request.data.get("email"),
+            message=request.data.get("message"),
         )
         srz = ContactMessageSerializer(contact_message)
         return Response(srz.data, status=status.HTTP_201_CREATED)
@@ -207,15 +211,15 @@ class EducationAPIView(APIView):
 
     def post(self, request):
         education = self.service.create_education(
-        user=request.user,
-        degree=request.data.get('degree'),
-        institution=request.data.get('institution'),
-        graduation_date=request.data.get('graduation_date'),
-        description=request.data.get('description')
+            user=request.user,
+            degree=request.data.get("degree"),
+            institution=request.data.get("institution"),
+            graduation_date=request.data.get("graduation_date"),
+            description=request.data.get("description"),
         )
         srz = EducationSerializer(education)
         return Response(srz.data, status=status.HTTP_201_CREATED)
-    
+
     def put(self, request, sku):
         self.service.update_education(sku, **request.data)
         return Response(status=status.HTTP_204_NO_CONTENT)
@@ -240,11 +244,11 @@ class ExperienceAPIView(APIView):
 
     def post(self, request):
         experience = self.service.create_experience(
-        user=request.user,
-        job_title=request.data.get('job_title'),
-        company=request.data.get('company'),
-        start_date=request.data.get('start_date'),
-        url=request.data.get('url')
+            user=request.user,
+            job_title=request.data.get("job_title"),
+            company=request.data.get("company"),
+            start_date=request.data.get("start_date"),
+            url=request.data.get("url"),
         )
         return Response(experience, status=status.HTTP_201_CREATED)
 
@@ -270,16 +274,16 @@ class CertificationAPIView(APIView):
 
     def post(self, request):
         certification = self.service.create_certification(
-        user=request.user,
-        name=request.data.get('name'),
-        issuing_organization=request.data.get('issuing_organization'),
-        issue_date=request.data.get('issue_date'),
-        expiration_date=request.data.get('expiration_date'),
-        description=request.data.get('description'),
+            user=request.user,
+            name=request.data.get("name"),
+            issuing_organization=request.data.get("issuing_organization"),
+            issue_date=request.data.get("issue_date"),
+            expiration_date=request.data.get("expiration_date"),
+            description=request.data.get("description"),
         )
-        srz = CertificationSerializer(srz)
+        srz = CertificationSerializer(certification)
         return Response(srz.data, status=status.HTTP_201_CREATED)
-    
+
     def put(self, request, sku):
         self.service.update_certification(sku, **request.data)
         return Response(status=status.HTTP_204_NO_CONTENT)

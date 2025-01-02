@@ -1,15 +1,18 @@
-from .repositories import (StatisticRepository,
-                           GalleryItemRepository,
-                           ServiceRepository,
-                           EventRepository,
-                           FAQRepository,
-                           SubscriberRepository)
+from .repositories import (
+    StatisticRepository,
+    GalleryItemRepository,
+    ServiceRepository,
+    EventRepository,
+    FAQRepository,
+    SubscriberRepository,
+)
 
 
 class Statistic_Services:
     """
     Extending Statistic model CRUD operations
     """
+
     def __init__(self, *args, **kwargs):
         self.repository = StatisticRepository()
 
@@ -19,8 +22,8 @@ class Statistic_Services:
     def get_single_statistic(self, sku):
         return self.repository.get_statistic_by_sku(sku)
 
-    def create_statistic(self,user, project,description,rate):
-        return self.repository.create_statistic(user, project,description,rate)
+    def create_statistic(self, user, project, description, rate):
+        return self.repository.create_statistic(user, project, description, rate)
 
     def update_statistic(self, sku, **kwargs):
         self.repository.update_statistic(sku, kwargs)
@@ -33,6 +36,7 @@ class GalleryItem_Services:
     """
     Extending GalleryItem model CRUD operations
     """
+
     def __init__(self, *args, **kwargs):
         self.repository = GalleryItemRepository()
 
@@ -43,7 +47,9 @@ class GalleryItem_Services:
         return self.repository.get_gallery_item_by_sku(sku)
 
     def create_galleryitem(self, title, image, description):
-        return self.repository.create_gallery_item(title=title,image=image,description=description)
+        return self.repository.create_gallery_item(
+            title=title, image=image, description=description
+        )
 
     def update_galleryitem(self, sku, **kwargs):
         self.repository.update_gallery_item(sku, kwargs)
@@ -56,6 +62,7 @@ class Service_Services:
     """
     Extending Service model CRUD operations
     """
+
     def __init__(self, *args, **kwargs):
         self.repository = ServiceRepository()
 
@@ -66,7 +73,9 @@ class Service_Services:
         return self.repository.get_service_by_sku(sku)
 
     def create_service(self, user, name, description, price):
-        return self.repository.created_service(user=user, name=name, description=description, price=price)
+        return self.repository.created_service(
+            user=user, name=name, description=description, price=price
+        )
 
     def update_service(self, sku, **kwargs):
         self.repository.update_service(sku, kwargs)
@@ -79,6 +88,7 @@ class Event_Service:
     """
     Extending Event model CRUD operations
     """
+
     def __init__(self, *args, **kwargs):
         self.repository = EventRepository()
 
@@ -89,7 +99,9 @@ class Event_Service:
         return self.repository.get_event_by_sku(sku)
 
     def create_event(self, user, name, date, location, description):
-        return self.repository.create_event(user=user, name=name, date=date, location=location, description=description)
+        return self.repository.create_event(
+            user=user, name=name, date=date, location=location, description=description
+        )
 
     def update_event(self, sku, **kwargs):
         self.repository.update_event(sku, kwargs)
@@ -102,6 +114,7 @@ class FAQ_Service:
     """
     Extending FAQ model CRUD operations
     """
+
     def __init__(self, *args, **kwargs):
         self.repository = FAQRepository()
 
@@ -125,6 +138,7 @@ class Subscriber_Service:
     """
     Extending Subscriber model CRUD operations
     """
+
     def __init__(self, *args, **kwargs):
         self.repository = SubscriberRepository()
 
@@ -134,8 +148,10 @@ class Subscriber_Service:
     def get_single_subscriber(self, sku):
         return self.repository.get_subscriber_by_sku(sku)
 
-    def create_subscriber(self,email, date_subscribed):
-        return self.repository.create_subscriber(email=email, date_subscribed=date_subscribed)
+    def create_subscriber(self, email, date_subscribed):
+        return self.repository.create_subscriber(
+            email=email, date_subscribed=date_subscribed
+        )
 
     def update_subscriber(self, sku, **kwargs):
         self.repository.update_subscriber(sku, kwargs)

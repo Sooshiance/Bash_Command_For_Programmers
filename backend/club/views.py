@@ -1,21 +1,24 @@
-from typing import Any
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, permissions
 from rest_framework.exceptions import ValidationError
 
-from .serializers import (StatisticSerializer,
-                          GalleryItemSerializer,
-                          ServiceSerializer,
-                          EventSerializer,
-                          FAQSerializer,
-                          SubscriberSerializer,)
-from .services import (Statistic_Services,
-                       GalleryItem_Services,
-                       Service_Services,
-                       Event_Service,
-                       FAQ_Service,
-                       Subscriber_Service,)
+from .serializers import (
+    StatisticSerializer,
+    GalleryItemSerializer,
+    ServiceSerializer,
+    EventSerializer,
+    FAQSerializer,
+    SubscriberSerializer,
+)
+from .services import (
+    Statistic_Services,
+    GalleryItem_Services,
+    Service_Services,
+    Event_Service,
+    FAQ_Service,
+    Subscriber_Service,
+)
 
 from project.models import Project
 
@@ -25,7 +28,7 @@ class StatisticAPIView(APIView):
 
     def __init__(self) -> None:
         self.service = Statistic_Services()
-    
+
     def get(self, request, sku=None):
         if sku:
             statistic = self.service.get_single_statistic(sku)
@@ -63,7 +66,7 @@ class GalleryItemAPIView(APIView):
 
     def __init__(self) -> None:
         self.service = GalleryItem_Services()
-    
+
     def get(self, request, sku=None):
         if sku:
             gi = self.service.get_single_galleryitem(sku)
@@ -96,7 +99,7 @@ class ServiceAPIView(APIView):
 
     def __init__(self) -> None:
         self.service = Service_Services()
-    
+
     def get(self, request, sku=None):
         if sku:
             serv = self.service.get_single_service(sku)
@@ -129,7 +132,7 @@ class EventAPIView(APIView):
 
     def __init__(self) -> None:
         self.service = Event_Service()
-    
+
     def get(self, request, sku=None):
         if sku:
             e = self.service.get_single_event(sku)
@@ -164,7 +167,7 @@ class FAQAPIView(APIView):
 
     def __init__(self) -> None:
         self.service = FAQ_Service()
-    
+
     def get(self, request, sku=None):
         if sku:
             faq = self.service.get_single_faq(sku)
@@ -192,10 +195,9 @@ class FAQAPIView(APIView):
 
 
 class SubscriberAPIView(APIView):
-
     def __init__(self) -> None:
         self.service = Subscriber_Service()
-    
+
     def get(self, request, sku=None):
         if sku:
             ss = self.service.get_single_subscriber(sku)

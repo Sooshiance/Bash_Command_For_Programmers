@@ -1,11 +1,13 @@
-from .repositories import (ProjectRepository,
-                           PostRepository,
-                           SkillRepository,
-                           TestimonialRepository,
-                           ContactMessageRepository,
-                           EducationRepository,
-                           ExperienceRepository,
-                           CertificationRepository)
+from .repositories import (
+    ProjectRepository,
+    PostRepository,
+    SkillRepository,
+    TestimonialRepository,
+    ContactMessageRepository,
+    EducationRepository,
+    ExperienceRepository,
+    CertificationRepository,
+)
 
 
 class ProjectService:
@@ -79,7 +81,9 @@ class TestimonialService:
         return self.repository.get_testimonial_by_sku(sku)
 
     def create_testimonial(self, user, name, content, position, company):
-        return self.repository.create_testimonial(user, name, content, position, company)
+        return self.repository.create_testimonial(
+            user, name, content, position, company
+        )
 
     def update_testimonial(self, sku, **kwargs):
         self.repository.update_testimonial(sku, **kwargs)
@@ -119,7 +123,9 @@ class EducationService:
         return self.repository.get_education_by_sku(sku)
 
     def create_education(self, user, degree, institution, graduation_date, description):
-        return self.repository.create_education(user, degree, institution, graduation_date, description)
+        return self.repository.create_education(
+            user, degree, institution, graduation_date, description
+        )
 
     def update_education(self, sku, **kwargs):
         self.repository.update_education(sku, **kwargs)
@@ -138,11 +144,17 @@ class ExperienceService:
     def get_experience_by_sku(self, sku):
         return self.repository.get_experience_by_sku(sku)
 
-    def create_experience(self, user,job_title,company,start_date,end_date,description):
-        return self.repository.create_experience(user,job_title=job_title,company=company,
-                                                 start_date=start_date,
-                                                 end_date=end_date,
-                                                 description=description,)
+    def create_experience(
+        self, user, job_title, company, start_date, end_date, description
+    ):
+        return self.repository.create_experience(
+            user,
+            job_title=job_title,
+            company=company,
+            start_date=start_date,
+            end_date=end_date,
+            description=description,
+        )
 
     def update_experience(self, sku, **kwargs):
         self.repository.update_experience(sku, **kwargs)
@@ -161,11 +173,17 @@ class CertificationService:
     def get_certification_by_sku(self, sku):
         return self.repository.get_certification_by_sku(sku)
 
-    def create_certification(self, user,name,issuing_organization,issue_date,expiration_date,description):
-        return self.repository.create_certification(user,name=name,issuing_organization=issuing_organization,
-                                                    issue_date=issue_date,
-                                                    expiration_date=expiration_date,
-                                                    description=description,)
+    def create_certification(
+        self, user, name, issuing_organization, issue_date, expiration_date, description
+    ):
+        return self.repository.create_certification(
+            user,
+            name=name,
+            issuing_organization=issuing_organization,
+            issue_date=issue_date,
+            expiration_date=expiration_date,
+            description=description,
+        )
 
     def update_certification(self, sku, **kwargs):
         self.repository.update_certification(sku, **kwargs)

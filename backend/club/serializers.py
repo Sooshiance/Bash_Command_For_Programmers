@@ -1,17 +1,26 @@
 from rest_framework import serializers
 
-from .models import (Statistic,
-                     GalleryItem,
-                     Service,
-                     Event,
-                     FAQ,
-                     Subscriber,)
+from .models import (
+    Statistic,
+    GalleryItem,
+    Service,
+    Event,
+    FAQ,
+    Subscriber,
+)
 
 
 class StatisticSerializer(serializers.ModelSerializer):
     class Meta:
         model = Statistic
-        fields = ['pk', 'user', 'project', 'description', 'rate', 'averageSingleProjectRate']
+        fields = [
+            "pk",
+            "user",
+            "project",
+            "description",
+            "rate",
+            "averageSingleProjectRate",
+        ]
 
 
 class GalleryItemSerializer(serializers.ModelSerializer):

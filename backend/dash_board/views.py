@@ -2,12 +2,13 @@ from rest_framework import permissions, generics
 from rest_framework.exceptions import ValidationError
 from rest_framework.pagination import PageNumberPagination
 
-from .queries import (ProjectQuery,
-                      PostQuery,)
-from .serializers import (ProjectSerializer as BaseProjectSerializer)
+from .queries import (
+    ProjectQuery,
+    PostQuery,
+)
+from .serializers import ProjectSerializer as BaseProjectSerializer
 
-from project.serializers import (ProjectSerializer,
-                                 PostSerializer)
+from project.serializers import ProjectSerializer, PostSerializer
 
 
 class CreatedProjectTimeLapse(generics.ListAPIView):
@@ -16,12 +17,12 @@ class CreatedProjectTimeLapse(generics.ListAPIView):
     pagination_class = PageNumberPagination
 
     def get_object(self):
-        start = self.kwargs['start']
-        end = self.kwargs['end']
+        start = self.kwargs["start"]
+        end = self.kwargs["end"]
         if str(end) <= str(start):
             raise ValidationError(detail="Not ordered days!")
         return start, end
-    
+
     def get_queryset(self):
         start, end = self.get_object()
         x = ProjectQuery.count_created_project_duration(start, end)
@@ -34,9 +35,9 @@ class CreatedPostOneDay(generics.ListAPIView):
     pagination_class = PageNumberPagination
 
     def get_object(self):
-        day = self.kwargs['day']
+        day = self.kwargs["day"]
         return day
-    
+
     def get_queryset(self):
         day = self.get_object()
         x = PostQuery.count_created_post_duration(day)

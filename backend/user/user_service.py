@@ -10,18 +10,17 @@ from .user_repository import UserRepository, ProfileRepository
 
 
 class UserService:
-    """
-    
-    """
+    """ """
+
     @staticmethod
     def register_user(email, username, phone, password, first_name, last_name):
         user = UserRepository.create_user(
-        email=email,
-        username=username,
-        phone=phone,
-        password=password,
-        first_name=first_name,
-        last_name=last_name
+            email=email,
+            username=username,
+            phone=phone,
+            password=password,
+            first_name=first_name,
+            last_name=last_name,
         )
         user.set_password(password)
         user.save()
@@ -33,20 +32,19 @@ class UserService:
 
 
 class ProfileService:
-    """
-    
-    """
+    """ """
+
     @staticmethod
     def get_profile(user):
         return ProfileRepository.get_profile_by_user(user)
-    
+
     @staticmethod
     def update_profile(user, **kwargs):
         profile = ProfileRepository.get_profile_by_user(user)
         if profile:
             return ProfileRepository.update_profile(profile, **kwargs)
         return None
-    
+
     @staticmethod
     def delete_profile(user):
         profile = ProfileRepository.get_profile_by_user(user)
@@ -57,9 +55,8 @@ class ProfileService:
 
 
 class OTPService:
-    """
-    
-    """
+    """ """
+
     @staticmethod
     def request_otp(email):
         try:
@@ -67,8 +64,8 @@ class OTPService:
             result = sendToken(user)
             return result
         except User.DoesNotExist:
-            return {'error': 'User not found', 'otp': False}
-    
+            return {"error": "User not found", "otp": False}
+
     @staticmethod
     def verify_otp(email, otp):
         try:
@@ -76,7 +73,11 @@ class OTPService:
             otp_record = OTPRepository.get_otp_by_user(user)
             if (timezone.now() - otp_record.created_at).seconds < 60:
                 otp_record.delete()
-            if otp_record and otp_record.otp == otp and (timezone.now() - otp_record.created_at).seconds < 60:
+            if (
+                otp_record
+                and otp_record.otp == otp
+                and (timezone.now() - otp_record.created_at).seconds < 60
+            ):
                 return True
             return False
         except User.DoesNotExist:

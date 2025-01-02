@@ -1,11 +1,13 @@
-from project.models import (Project,
-                            Post,
-                            Skill,
-                            Testimonial,
-                            ContactMessage,
-                            Education,
-                            Experience,
-                            Certification,)
+from project.models import (
+    Project,
+    Post,
+    Skill,
+    Testimonial,
+    ContactMessage,
+    Education,
+    Experience,
+    Certification,
+)
 
 
 class ProjectRepository:
@@ -16,7 +18,9 @@ class ProjectRepository:
         return Project.objects.get(sku=sku)
 
     def create_project(self, user, title, description, image=None, url=None):
-        project = Project(user=user, title=title, description=description, image=image, url=url)
+        project = Project(
+            user=user, title=title, description=description, image=image, url=url
+        )
         project.save()
         return project
 
@@ -35,7 +39,11 @@ class PostRepository:
         return Post.objects.get(sku=sku)
 
     def create_post(self, title, content, author):
-        project = Post(title=title,content=content,author=author,)
+        project = Post(
+            title=title,
+            content=content,
+            author=author,
+        )
         project.save()
         return project
 
@@ -72,8 +80,10 @@ class TestimonialRepository:
     def get_testimonial_by_sku(self, sku):
         return Testimonial.objects.get(sku=sku)
 
-    def create_testimonial(self, user, name,content,position,company):
-        testimonial = Testimonial(user=user, name=name,content=content,position=position,company=company)
+    def create_testimonial(self, user, name, content, position, company):
+        testimonial = Testimonial(
+            user=user, name=name, content=content, position=position, company=company
+        )
         testimonial.save()
         return testimonial
 
@@ -91,8 +101,10 @@ class ContactMessageRepository:
     def get_contact_message_by_sku(self, sku):
         return ContactMessage.objects.get(sku=sku)
 
-    def create_contact_message(self, user, name,email,message):
-        contact_message = ContactMessage(user=user,name=name,email=email,message=message)
+    def create_contact_message(self, user, name, email, message):
+        contact_message = ContactMessage(
+            user=user, name=name, email=email, message=message
+        )
         contact_message.save()
         return contact_message
 
@@ -110,9 +122,14 @@ class EducationRepository:
     def get_education_by_sku(self, sku):
         return Education.objects.get(sku=sku)
 
-    def create_education(self, user,degree,institution,graduation_date,description):
-        education = Education(user=user,degree=degree,institution=institution,
-                              graduation_date=graduation_date,description=description)
+    def create_education(self, user, degree, institution, graduation_date, description):
+        education = Education(
+            user=user,
+            degree=degree,
+            institution=institution,
+            graduation_date=graduation_date,
+            description=description,
+        )
         education.save()
         return education
 
@@ -130,9 +147,17 @@ class ExperienceRepository:
     def get_experience_by_sku(self, sku):
         return Experience.objects.get(sku=sku)
 
-    def create_experience(self, user, job_title,company,start_date,end_date,description):
-        experience = Experience(user=user,job_title=job_title,company=company,
-                                start_date=start_date,end_date=end_date,description=description)
+    def create_experience(
+        self, user, job_title, company, start_date, end_date, description
+    ):
+        experience = Experience(
+            user=user,
+            job_title=job_title,
+            company=company,
+            start_date=start_date,
+            end_date=end_date,
+            description=description,
+        )
         experience.save()
         return experience
 
@@ -150,11 +175,17 @@ class CertificationRepository:
     def get_certification_by_sku(self, sku):
         return Certification.objects.get(sku=sku)
 
-    def create_certification(self, user,name,issuing_organization,issue_date,expiration_date,description):
-        certification = Certification(user=user,name=name,issuing_organization=issuing_organization,
-                                      issue_date=issue_date,
-                                      expiration_date=expiration_date,
-                                      description=description,)
+    def create_certification(
+        self, user, name, issuing_organization, issue_date, expiration_date, description
+    ):
+        certification = Certification(
+            user=user,
+            name=name,
+            issuing_organization=issuing_organization,
+            issue_date=issue_date,
+            expiration_date=expiration_date,
+            description=description,
+        )
         certification.save()
         return certification
 

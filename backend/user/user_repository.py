@@ -2,19 +2,18 @@ from .models import User, Profile, OTP
 
 
 class UserRepository:
-    """
-    
-    """
+    """ """
+
     @staticmethod
-    def get_user_by_email(email)-> User:
+    def get_user_by_email(email) -> User:
         try:
             return User.objects.get(email=email)
         except User.DoesNotExist:
             return None
 
     @staticmethod
-    def create_user(**kwargs)-> User:
-        user:User = User.objects.create_user(**kwargs)
+    def create_user(**kwargs) -> User:
+        user: User = User.objects.create_user(**kwargs)
         return user
 
     @staticmethod
@@ -26,9 +25,8 @@ class UserRepository:
 
 
 class ProfileRepository:
-    """
-    
-    """
+    """ """
+
     @staticmethod
     def get_profile_by_user(user):
         try:
@@ -49,9 +47,8 @@ class ProfileRepository:
 
 
 class OTPRepository:
-    """
-    
-    """
+    """ """
+
     @staticmethod
     def get_otp_by_user(user):
         try:

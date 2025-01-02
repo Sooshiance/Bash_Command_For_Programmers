@@ -5,15 +5,15 @@ from .models import User, Profile
 
 
 class UserAdmin(BaseUserAdmin):
-    list_display = ['phone', 'email','username']
+    list_display = ["phone", "email", "username"]
     filter_horizontal = ()
-    list_filter = ('is_superuser',)
+    list_filter = ("is_superuser",)
     fieldsets = ()
-    search_fields = ['email']
+    search_fields = ["email"]
 
 
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('user',)
+    list_display = ("user",)
 
 
 admin.site.register(User, UserAdmin)

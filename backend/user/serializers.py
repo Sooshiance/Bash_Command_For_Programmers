@@ -1,35 +1,39 @@
+from typing import TYPE_CHECKING
+
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.tokens import Token
 
 from .models import User, Profile
 
+if TYPE_CHECKING:
+    from .models import User as UserType
 
-class UserSerializer(serializers.ModelSerializer):
+
+class UserSerializer(serializers.ModelSerializer["UserType"]):
     class Meta:
         model = User
-        fields = ['pk', 'username']
+        fields = ["pk", "username"]
 
 
-class RegisterSerializer(serializers.ModelSerializer):
+class RegisterSerializer(serializers.ModelSerializer["UserType"]):
     class Meta:
         model = User
-        exclude = ['is_active', 'is_staff', 'is_superuser']
+        exclude = ["is_active", "is_staff", "is_superuser"]
 
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = '__all__'
+        fields = "__all__"
 
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
-
     @classmethod
     def get_token(cls, user: User) -> Token:
         token = super().get_token(user)
-        token['username'] = user.username
-        token['id'] = user.pk
+        token["username"] = user.username
+        token["id"] = user.pk
         return token
 
 

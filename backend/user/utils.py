@@ -1,13 +1,9 @@
-import datetime
-from django.utils import timezone
-
 import pyotp
 
 from .models import OTP
 
 
 def sendToken(user):
-
     totp = pyotp.TOTP(pyotp.random_base32(), interval=60)
 
     otp = totp.now()
@@ -16,4 +12,4 @@ def sendToken(user):
 
     print(f"OTP ====== {otp}")
 
-    return {'otp': otp, 'error': False}
+    return {"otp": otp, "error": False}

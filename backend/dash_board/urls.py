@@ -1,8 +1,10 @@
 from django.urls import path
 
-from .views import (CreatedProjectTimeLapse,
-                    CreatedPostOneDay,
-                    AdvancedSearchView,)
+from .views import (
+    CreatedProjectTimeLapse,
+    CreatedPostOneDay,
+    AdvancedSearchView,
+)
 
 
 app_name = "dash_board"

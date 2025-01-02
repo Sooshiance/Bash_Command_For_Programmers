@@ -1,13 +1,15 @@
 from rest_framework import serializers
 
-from project.models import (Project,
-                            Post,
-                            Skill,
-                            Testimonial,
-                            ContactMessage,
-                            Education,
-                            Experience,
-                            Certification,)
+from project.models import (
+    Project,
+    Post,
+    Skill,
+    Testimonial,
+    ContactMessage,
+    Education,
+    Experience,
+    Certification,
+)
 
 
 class ProjectSerializer(serializers.ModelSerializer):

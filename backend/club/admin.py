@@ -1,35 +1,49 @@
 from django.contrib import admin
 
-from .models import (Statistic,
-                     GalleryItem,
-                     Service,
-                     Event,
-                     FAQ,
-                     Subscriber,)
+from .models import (
+    Statistic,
+    GalleryItem,
+    Service,
+    Event,
+    FAQ,
+    Subscriber,
+)
 
 
 class StatisticAdmin(admin.ModelAdmin):
-    list_display = ['project',]
+    list_display = [
+        "project",
+    ]
 
 
 class GalleryItemAdmin(admin.ModelAdmin):
-    list_display = ['title',]
+    list_display = [
+        "title",
+    ]
 
 
 class ServiceAdmin(admin.ModelAdmin):
-    list_display = ['name',]
+    list_display = [
+        "name",
+    ]
 
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ['name',]
+    list_display = [
+        "name",
+    ]
 
 
 class FAQAdmin(admin.ModelAdmin):
-    list_display = ['question',]
+    list_display = [
+        "question",
+    ]
 
 
 class SubscriberAdmin(admin.ModelAdmin):
-    list_display = ['email',]
+    list_display = [
+        "email",
+    ]
 
 
 admin.site.register(Statistic, StatisticAdmin)
